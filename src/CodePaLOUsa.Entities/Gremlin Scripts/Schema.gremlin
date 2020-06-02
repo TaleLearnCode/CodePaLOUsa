@@ -1,0 +1,46 @@
+﻿-- Event
+g.addV('event').property('eventId', 'schemaDefinition').property('name', 'event').property('id', 'Identifier of the event document. This is the database partition key.').property('name', 'The name of the event.').property('tagline', 'The tagline for the event').property('about', 'The about information for the event').property('locationName', 'The name of the primary location where the event is taking place.').property('startDate', 'The date the event starts.').property('endDate', 'The date the event ends.').property('isScheduleReleased', 'Flag indicating whether the schedule has been released to the public.').property('registrationSiteUrl', 'The URL for the event registration site.')
+
+-- Event Day
+g.addV('eventDay').property('eventId', 'schemaDefinition').property('name', 'eventDay').property('id', 'Identifier of the event day document.').property('date', 'The date of the event day.').property('startTime', 'The number of minutes from midnight representing the start time for the day.').property('endTime', 'The number of minutes from midnight representing the end time for the day.').property('title', 'The title for the day')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').has('eventId', 'schemaDefinition').addE('has').to(g.V('Identifier of the event day document.'))
+
+-- Session Period Type
+g.addV('sessionPeriodType').property('eventId', 'schemaDefinition').property('name', 'sessionPeriodType').property('id', 'Identifier of the session period type document').property('displayLabel', 'The label for the session period type').property('sortOrder', 'The sort order of the session period type relative to the other session period types.')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionPeriodType').has('eventId', 'schemaDefinition'))
+
+-- Session Period
+g.addV('sessionPeriod').property('eventId', 'schemaDefinition').property('name', 'sessionPeriod').property('id', 'Identifier of the session period document').property('displayLabel', 'The label to use when displaying the session period').property('startTime', 'The number of minutes from midnight representing the start time for the period').property('endTime', 'The number of minutes from midnight representing the end time for the period.')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionPeriod').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('eventDay').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionPeriod').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('sessionPeriod').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionPeriodType').has('eventId', 'schemaDefinition'))
+
+-- Tag
+g.addV('tag').property('eventId', 'schemaDefinition').property('name', 'tag').property('id', 'Identifier of the tag document').property('displayLabel', 'The display label for the tag')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('tag').has('eventId', 'schemaDefinition'))
+
+-- Session Type
+g.addV('sessionType').property('eventId', 'schemaDefinition').property('name', 'sessionType').property('id', 'Identifier of the session type document').property('displayLabel', 'The display label for the session type.').property('sortOrder', 'The sort order of the session type relative to the other session types.').property('sessionLength', 'The number of minutes for sessions of the session type.').property('showOnSchcedule', 'Flag indicating whether to show sessions of the type in the schedule.')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionType').has('eventId', 'schemaDefinition'))
+
+-- Session Level
+g.addV('sessionLevel').property('eventId', 'schemaDefinition').property('name', 'sessionLevel').property('id', 'Identifier of the session level document').property('displayLabel', 'The display label for the session level').property('sortOrder', 'The sort order of the session level relative to the other session levels')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionLevel').has('eventId', 'schemaDefinition'))
+
+-- Topic
+g.addV('topic').property('eventId', 'schemaDefinition').property('name', 'topic').property('id', 'Identifier of the topic document').property('displayLabel', 'The display label for the topic').property('description', 'The description of the topic')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('topic').has('eventId', 'schemaDefinition'))
+
+-- Room
+g.addV('room').property('eventId', 'schemaDefinition').property('name', 'room').property('id', 'Identifier of the room document').property('displayLabel', 'The display label for the room')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('room').has('eventId', 'schemaDefinition'))
+
+-- Session
+g.addV('session').property('eventId', 'schemaDefinition').property('name', 'session').property('id', 'Identifier of the session document.').property('title', 'The title of the session').property('shortTitle', 'The shortened title of the session.').property('description', 'The description (abstract) for the session.').property('shortDescription', 'The shortened description for the session')
+g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('presentedAt').to(g.V().hasLabel('session').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('is').to(g.V().hasLabel('sessionType').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('is').to(g.V().hasLabel('sessionLevel').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('is').to(g.V().hasLabel('topic').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('presentedIn').to(g.V().hasLabel('room').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('presentedDuring').to(g.V().hasLabel('sessionPeriod').has('eventId', 'schemaDefinition'))
+g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('isTagged').to(g.V().hasLabel('tag').has('eventId', 'schemaDefinition'))
