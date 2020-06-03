@@ -1,4 +1,7 @@
-﻿-- Event
+﻿g.E().Drop()
+g.V().Drop()
+
+-- Event
 g.addV('event').property('eventId', 'schemaDefinition').property('name', 'event').property('id', 'Identifier of the event document. This is the database partition key.').property('name', 'The name of the event.').property('tagline', 'The tagline for the event').property('about', 'The about information for the event').property('locationName', 'The name of the primary location where the event is taking place.').property('startDate', 'The date the event starts.').property('endDate', 'The date the event ends.').property('isScheduleReleased', 'Flag indicating whether the schedule has been released to the public.').property('registrationSiteUrl', 'The URL for the event registration site.')
 
 -- Event Day
