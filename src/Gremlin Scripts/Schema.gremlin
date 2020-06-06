@@ -19,23 +19,23 @@ g.V().hasLabel('eventDay').has('eventId', 'schemaDefinition').addE('has').to(g.V
 g.V().hasLabel('sessionPeriod').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionPeriodType').has('eventId', 'schemaDefinition'))
 
 -- Tag
-g.addV('tag').property('eventId', 'schemaDefinition').property('name', 'tag').property('id', 'Identifier of the tag document').property('name', 'The display label for the tag')
+g.addV('tag').property('eventId', 'schemaDefinition').property('name', 'tag').property('id', 'Identifier of the tag document').property('name', 'The display label for the tag').property('sessionizeId', 'Identifier of the tag within Sessionize')
 g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('tag').has('eventId', 'schemaDefinition'))
 
 -- Session Type
-g.addV('sessionType').property('eventId', 'schemaDefinition').property('name', 'sessionType').property('id', 'Identifier of the session type document').property('name', 'The display label for the session type.').property('sortOrder', 'The sort order of the session type relative to the other session types.').property('sessionLength', 'The number of minutes for sessions of the session type.').property('showOnSchcedule', 'Flag indicating whether to show sessions of the type in the schedule.')
+g.addV('sessionType').property('eventId', 'schemaDefinition').property('name', 'sessionType').property('id', 'Identifier of the session type document').property('name', 'The display label for the session type.').property('sortOrder', 'The sort order of the session type relative to the other session types.').property('sessionLength', 'The number of minutes for sessions of the session type.').property('showOnSchcedule', 'Flag indicating whether to show sessions of the type in the schedule.').property('sessionizeId', 'Identifier for the session type within Sessionize.')
 g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionType').has('eventId', 'schemaDefinition'))
 
 -- Session Level
-g.addV('sessionLevel').property('eventId', 'schemaDefinition').property('name', 'sessionLevel').property('id', 'Identifier of the session level document').property('name', 'The display label for the session level').property('sortOrder', 'The sort order of the session level relative to the other session levels')
+g.addV('sessionLevel').property('eventId', 'schemaDefinition').property('name', 'sessionLevel').property('id', 'Identifier of the session level document').property('name', 'The display label for the session level').property('sortOrder', 'The sort order of the session level relative to the other session levels').property('sessionizeId', 'Identifier of the session level within Sessionize')
 g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('sessionLevel').has('eventId', 'schemaDefinition'))
 
 -- Topic
-g.addV('topic').property('eventId', 'schemaDefinition').property('name', 'topic').property('id', 'Identifier of the topic document').property('name', 'The display label for the topic').property('description', 'The description of the topic').property('sortOrder', 'The sort order of room relative to the other rooms.')
+g.addV('topic').property('eventId', 'schemaDefinition').property('name', 'topic').property('id', 'Identifier of the topic document').property('name', 'The display label for the topic').property('description', 'The description of the topic').property('sortOrder', 'The sort order of room relative to the other rooms.').property('sessionizeId', 'Identifier of the topic within Sessionize')
 g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('topic').has('eventId', 'schemaDefinition'))
 
 -- Room
-g.addV('room').property('eventId', 'schemaDefinition').property('name', 'room').property('id', 'Identifier of the room document').property('name', 'The display label for the room')
+g.addV('room').property('eventId', 'schemaDefinition').property('name', 'room').property('id', 'Identifier of the room document').property('name', 'The display label for the room').property('sessionizeId', 'Identifier of the room within Sessionize.')
 g.V().hasLabel('event').has('eventId', 'schemaDefinition').addE('has').to(g.V().hasLabel('room').has('eventId', 'schemaDefinition'))
 
 -- Session

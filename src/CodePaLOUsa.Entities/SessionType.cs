@@ -7,8 +7,11 @@ namespace CodePaLOUsa.Entities
 	/// Represents a type of session.
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
-	public class SessionType : SortedLookupType
+	[Vertex("sessionType")]
+	public class SessionType : SessionizeSortedLookupType
 	{
+
+		// TODO: Add a way to split a session length into multiple parts (full-day workshop into 2 segments)
 
 		/// <summary>
 		/// Gets or sets the length of the session.
@@ -35,10 +38,7 @@ namespace CodePaLOUsa.Entities
 		/// <param name="name">The name of the vertex subject.</param>
 		/// <param name="id">The identifier of the vertex document.</param>
 		/// <param name="sortOrder">The sort of the room among the other rooms.</param>
-		public SessionType(string eventId, string name, int sortOrder, string id = "") : base(eventId, name, sortOrder, id)
-		{
-			SortOrder = sortOrder;
-		}
+		public SessionType(string eventId, string name, int sortOrder, string id = "", string sessionizeId = "") : base(eventId, name, sortOrder, id, sessionizeId) { }
 
 	}
 

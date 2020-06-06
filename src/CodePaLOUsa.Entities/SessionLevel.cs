@@ -8,8 +8,9 @@ namespace CodePaLOUsa.Entities
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
 	[Vertex("sessionLevel")]
-	public class SessionLevel : SortedLookupType
+	public class SessionLevel : SessionizeSortedLookupType
 	{
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="SessionLevel"/> class.
 		/// </summary>
@@ -17,10 +18,8 @@ namespace CodePaLOUsa.Entities
 		/// <param name="name">The name of the vertex subject.</param>
 		/// <param name="id">The identifier of the vertex document.</param>
 		/// <param name="sortOrder">The sort of the room among the other rooms.</param>
-		public SessionLevel(string eventId, string name, int sortOrder, string id = "") : base(eventId, name, sortOrder, id)
-		{
-			SortOrder = sortOrder;
-		}
+		public SessionLevel(string eventId, string name, int sortOrder, string id = "", string sessionizeId = "") : base(eventId, name, sortOrder, id, sessionizeId) { }
+
 	}
 
 }

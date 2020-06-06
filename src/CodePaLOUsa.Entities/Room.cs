@@ -7,9 +7,10 @@ namespace CodePaLOUsa.Entities
 	/// Represents a "room" where a session is presented.
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
-	[Vertex("Room")]
-	public class Room : SortedLookupType
+	[Vertex("room")]
+	public class Room : SessionizeSortedLookupType
 	{
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Room"/> class.
 		/// </summary>
@@ -17,10 +18,7 @@ namespace CodePaLOUsa.Entities
 		/// <param name="name">The name of the vertex subject.</param>
 		/// <param name="id">The identifier of the vertex document.</param>
 		/// <param name="sortOrder">The sort of the room among the other rooms.</param>
-		public Room(string eventId, string name, int sortOrder, string id = "") : base(eventId, name, sortOrder, id)
-		{
-			SortOrder = sortOrder;
-		}
+		public Room(string eventId, string name, int sortOrder, string id = "", string sessionizeId = "") : base(eventId, name, sortOrder, id, sessionizeId) { }
 	}
 
 }
