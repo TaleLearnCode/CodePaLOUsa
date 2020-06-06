@@ -1,5 +1,6 @@
 ﻿using Gremlin.Net.Driver.Exceptions;
 using System;
+using System.Globalization;
 
 namespace TaleLearnCode.CosmosGremlinORM
 {
@@ -31,11 +32,36 @@ namespace TaleLearnCode.CosmosGremlinORM
 		/// </value>
 		public decimal RetryAfterMs { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="QueryExecutionException"/> class.
+		/// </summary>
+		public QueryExecutionException() : base() { }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="QueryExecutionException"/> class.
+		/// </summary>
+		/// <param name="message">The message that describes the error.</param>
+		public QueryExecutionException(string? message) : base(message) { }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="QueryExecutionException"/> class.
+		/// </summary>
+		/// <param name="message">The error message that explains the reason for the exception.</param>
+		/// <param name="innerException">The exception that is the cause of the current exception, or a null reference (<see langword="Nothing" /> in Visual Basic) if no inner exception is specified.</param>
+		public QueryExecutionException(string? message, Exception? innerException) : base(message, innerException) { }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="QueryExecutionException"/> class.
+		/// </summary>
+		/// <param name="responseException">The response exception.</param>
+		/// <exception cref="System.ArgumentNullException">responseException</exception>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "It can be assumed that there will always be an instantiated ResponseException passed in.")]
 		public QueryExecutionException(ResponseException responseException) : base(responseException.Message, responseException)
 		{
-			StatusCode = Convert.ToInt32(GremlinQuery.GetValueAsString(responseException.StatusAttributes, "x-ms-status-code"));
-			RequestCharge = Convert.ToDecimal(GremlinQuery.GetValueAsString(responseException.StatusAttributes, "x-ms-total-request-charge"));
-			RetryAfterMs = Convert.ToDecimal(GremlinQuery.GetValueAsString(responseException.StatusAttributes, "x-ms-retry-after-ms"));
+			if (responseException is null) throw new ArgumentNullException(nameof(responseException));
+			StatusCode = Convert.ToInt32(GremlinQuery.GetValueAsString(responseException.StatusAttributes, "x-ms-status-code"), NumberFormatInfo.InvariantInfo);
+			RequestCharge = Convert.ToDecimal(GremlinQuery.GetValueAsString(responseException.StatusAttributes, "x-ms-total-request-charge"), NumberFormatInfo.InvariantInfo);
+			RetryAfterMs = Convert.ToDecimal(GremlinQuery.GetValueAsString(responseException.StatusAttributes, "x-ms-retry-after-ms"), NumberFormatInfo.InvariantInfo);
 		}
 
 	}

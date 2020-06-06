@@ -2,12 +2,12 @@
 using Gremlin.Net.Driver.Exceptions;
 using Gremlin.Net.Structure.IO.GraphSON;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TaleLearnCode.CosmosGremlinORM
 {
-
 	public static class GremlinQuery
 	{
 
@@ -40,10 +40,11 @@ namespace TaleLearnCode.CosmosGremlinORM
 
 		public static string GetValueAsString(IReadOnlyDictionary<string, object> dictionary, string key)
 		{
+			if (dictionary == null) throw new ArgumentNullException(nameof(dictionary));
 			return JsonConvert.SerializeObject(GetValueOrDefault(dictionary, key));
 		}
 
-		public static object? GetValueOrDefault(IReadOnlyDictionary<string, object> dictionary, string key)
+		private static object? GetValueOrDefault(IReadOnlyDictionary<string, object> dictionary, string key)
 		{
 			if (dictionary.ContainsKey(key))
 			{
@@ -54,5 +55,4 @@ namespace TaleLearnCode.CosmosGremlinORM
 		}
 
 	}
-
 }

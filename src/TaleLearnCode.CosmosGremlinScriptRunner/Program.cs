@@ -26,7 +26,7 @@ namespace TaleLearnCode.CosmosGremlinScriptRunner
 
 			List<string> statements = new List<string>();
 			while ((line = file.ReadLine()) != null)
-				if (!string.IsNullOrWhiteSpace(line) && !(line.StartsWith("--")))
+				if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("--"))
 					statements.Add(line);
 
 			if (statements.Any())

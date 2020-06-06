@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30021.99
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodePaLOUsa.Entities", "src\CodePaLOUsa.Entities\CodePaLOUsa.Entities.csproj", "{B6FF67D0-ABA4-40ED-ADBD-994AD13FEFCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaleLearnCode.CosmosGremlinORM", "src\TaleLearnCode.CosmosGremlinORM\TaleLearnCode.CosmosGremlinORM.csproj", "{35BAC97F-2DCA-4975-B938-5D367B363587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaleLearnCode.CosmosGremlinScriptRunner", "src\TaleLearnCode.CosmosGremlinScriptRunner\TaleLearnCode.CosmosGremlinScriptRunner.csproj", "{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaleLearnCode.CosmosGremlinScriptRunner", "src\TaleLearnCode.CosmosGremlinScriptRunner\TaleLearnCode.CosmosGremlinScriptRunner.csproj", "{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaleLearnCode.CosmosGremlinORM", "src\TaleLearnCode.CosmosGremlinORM\TaleLearnCode.CosmosGremlinORM.csproj", "{27F51602-4446-48CA-ACCE-E3452D7AE838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{B6FF67D0-ABA4-40ED-ADBD-994AD13FEFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6FF67D0-ABA4-40ED-ADBD-994AD13FEFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6FF67D0-ABA4-40ED-ADBD-994AD13FEFCF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35BAC97F-2DCA-4975-B938-5D367B363587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35BAC97F-2DCA-4975-B938-5D367B363587}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35BAC97F-2DCA-4975-B938-5D367B363587}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35BAC97F-2DCA-4975-B938-5D367B363587}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F51602-4446-48CA-ACCE-E3452D7AE838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F51602-4446-48CA-ACCE-E3452D7AE838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F51602-4446-48CA-ACCE-E3452D7AE838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F51602-4446-48CA-ACCE-E3452D7AE838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
