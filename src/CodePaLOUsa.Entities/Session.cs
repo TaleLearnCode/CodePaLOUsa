@@ -47,21 +47,11 @@ namespace CodePaLOUsa.Entities
 		[GraphProperty("prerequisites")]
 		public string? Prerequisites { get; set; }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="Session"/> class.
-		/// </summary>
-		/// <param name="eventId">Identifier of the event (used as the partition key)</param>
-		/// <param name="name">The name of the vertex subject.</param>
-		public Session(string eventId, string name, string description) : base(eventId, name)
-		{
-			Description = description;
-		}
-
 		/// <summary>Initializes a new instance of the <see cref="Session" /> class.</summary>
 		/// <param name="eventId">Identifier of the event (used as the partition key)</param>
 		/// <param name="name">The name of the vertex subject.</param>
 		/// <param name="id">The identifier of the vertex document.</param>
-		protected Session(string eventId, string name, string description, string id) : base(eventId, name, id)
+		protected Session(string eventId, string name, string description, string id = "") : base(eventId, name, id)
 		{
 			Description = description;
 		}

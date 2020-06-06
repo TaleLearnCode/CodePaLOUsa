@@ -16,13 +16,28 @@ namespace TaleLearnCode.CosmosGremlinScriptRunner
 
 			// TODO: Take in the script path as an argument
 
-			Console.WriteLine("Press any key to start the script execution...");
-			Console.ReadKey();
+			string scriptPath = default;
+			Console.WriteLine("Specify which script file to execute:");
+			Console.WriteLine("\t1. Schema documentation");
+			var input = Console.ReadKey(true);
+			switch (input.Key)
+			{
+				case ConsoleKey.D1:
+				case ConsoleKey.NumPad1:
+					scriptPath = @"D:\Repros\TaleLearnCode\CodePaLOUsa\src\Gremlin Scripts\Schema.gremlin";
+					break;
+				default:
+					Console.WriteLine("Invalid option selected");
+					Environment.Exit(0);
+					break;
+
+			}
 
 			string line;
 			int statementCount = 0;
 
-			var file = new StreamReader(@"D:\Repros\TaleLearnCode\CodePaLOUsa\src\CodePaLOUsa.Entities\Gremlin Scripts\Schema.gremlin");
+			//var file = new StreamReader(@"D:\Repros\TaleLearnCode\CodePaLOUsa\src\Gremlin Scripts\Schema.gremlin");
+			var file = new StreamReader(scriptPath);
 
 			List<string> statements = new List<string>();
 			while ((line = file.ReadLine()) != null)

@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodePaLOUsa.Entities", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaleLearnCode.CosmosGremlinScriptRunner", "src\TaleLearnCode.CosmosGremlinScriptRunner\TaleLearnCode.CosmosGremlinScriptRunner.csproj", "{43D521D2-B6C1-4FE6-B6AF-F304CAAD6BBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaleLearnCode.CosmosGremlinORM", "src\TaleLearnCode.CosmosGremlinORM\TaleLearnCode.CosmosGremlinORM.csproj", "{27F51602-4446-48CA-ACCE-E3452D7AE838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaleLearnCode.CosmosGremlinORM", "src\TaleLearnCode.CosmosGremlinORM\TaleLearnCode.CosmosGremlinORM.csproj", "{27F51602-4446-48CA-ACCE-E3452D7AE838}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gremlin Scripts", "Gremlin Scripts", "{59F2F40C-FF03-4F45-B32A-468BF0AF63F6}"
+	ProjectSection(SolutionItems) = preProject
+		src\Gremlin Scripts\Schema.gremlin = src\Gremlin Scripts\Schema.gremlin
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

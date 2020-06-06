@@ -1,5 +1,5 @@
-﻿g.E().Drop()
-g.V().Drop()
+﻿g.E().has('eventId', 'schemaDefinition').Drop()
+g.V().has('eventId', 'schemaDefinition').Drop()
 
 -- Event
 g.addV('event').property('eventId', 'schemaDefinition').property('name', 'event').property('id', 'Identifier of the event document. This is the database partition key.').property('name', 'The name of the event.').property('tagline', 'The tagline for the event').property('about', 'The "about" information for the event').property('startDate', 'The date the event starts.').property('endDate', 'The date the event ends.').property('scheduleReleased', 'Flag indicating whether the schedule has been released to the public.').property('registrationSiteUrl', 'The URL for the event registration site.').property('currentEvent', 'Flag indicating whether the event is the current event for the organization.')
@@ -49,6 +49,6 @@ g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('presentedDuri
 g.V().hasLabel('session').has('eventId', 'schemaDefinition').addE('isTagged').to(g.V().hasLabel('tag').has('eventId', 'schemaDefinition'))
 
 -- Speaker
-g.addV('speaker').property('eventId', 'schemaDefinition').property('name', 'speaker').property('id', 'Identifier of the speaker document.').property('name', 'The full name of the speaker.').property('firstName', 'The first name of the speaker.').property('lastName', 'The last name of the speaker').property('biography', 'The biography of the speaker').property('tagline', 'The speaker tagline').property('photo', 'URL for the photo of the speaker.).property('twitter', 'Link to the speaker Twitter profile.').property('linkedIn', 'Link to the speaker LinkedIn profile.').property('facebook', 'Link to the speaker Facebook profile.').property('instagram', 'Link to the speaker Instagram profile.').property('twitch', 'Link to the speaker Twitch profile.').property('blog', 'Link the speaker blog.').property('companyWebsite', 'Link to the website of the speaker company.')
+g.addV('speaker').property('eventId', 'schemaDefinition').property('name', 'speaker').property('id', 'Identifier of the speaker document.').property('name', 'The full name of the speaker.').property('firstName', 'The first name of the speaker.').property('lastName', 'The last name of the speaker').property('biography', 'The biography of the speaker').property('tagline', 'The speaker tagline').property('photo', 'URL for the photo of the speaker.').property('twitter', 'Link to the speaker Twitter profile.').property('linkedIn', 'Link to the speaker LinkedIn profile.').property('facebook', 'Link to the speaker Facebook profile.').property('instagram', 'Link to the speaker Instagram profile.').property('twitch', 'Link to the speaker Twitch profile.').property('blog', 'Link the speaker blog.').property('companyWebsite', 'Link to the website of the speaker company.')
 g.V().hasLabel('speaker').has('eventId', 'schemaDefinition').addE('presentsAt').to(g.V().hasLabel('event').has('eventId', 'schemaDefinition'))
 g.V().hasLabel('speaker').has('eventId', 'schemaDefinition').addE('presents').to(g.V().hasLabel('session').has('eventId', 'schemaDefinition'))
