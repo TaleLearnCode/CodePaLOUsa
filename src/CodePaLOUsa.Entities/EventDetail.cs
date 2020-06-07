@@ -9,7 +9,7 @@ namespace CodePaLOUsa.Entities
 	/// Represents the details of an event.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("Event")]
+	[Vertex("event", Description = "Details of an event.")]
 	public class EventDetail : Vertex
 	{
 
@@ -19,7 +19,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the about information for the event.
 		/// </value>
-		[GraphProperty("about")]
+		[GraphProperty("about", Description = "The about information for the event.")]
 		public string About { get; set; }
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>DateTime</c> representing the date the event starts.
 		/// </value>
-		[GraphProperty("startDate")]
+		[GraphProperty("startDate", Description = "The date the event starts.")]
 		public DateTime StartDate { get; set; }
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>DateTime</c> representing the date the event ends.
 		/// </value>
-		[GraphProperty("endDate")]
+		[GraphProperty("endDate", Description = "The date the event ends.")]
 		public DateTime EndDate { get; set; }
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		///   <c>true</c> if the schedule has been released; otherwise, <c>false</c>.
 		/// </value>
-		[GraphProperty("scheduleReleased")]
+		[GraphProperty("scheduleReleased", Description = "Flag indicating whether the schedule has been released.")]
 		public bool ScheduleReleased { get; set; }
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <see cref="Uri"/> representing the registration site URL.
 		/// </value>
-		[GraphProperty("registrationSiteUrl")]
+		[GraphProperty("registrationSiteUrl", Description = "The URL of the registration site for the event.")]
 		public Uri RegistrationSiteUrl { get; set; }
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		///   <c>true</c> if this event is the current event for the organization; otherwise, <c>false</c>.
 		/// </value>
-		[GraphProperty("isCurrentEvent")]
+		[GraphProperty("isCurrentEvent", Description = "Flag indicating whether the event is the current event.")]
 		public bool IsCurrentEvent { get; set; }
 
 		/// <summary>

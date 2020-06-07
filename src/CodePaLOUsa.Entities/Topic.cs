@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Defines the overall topic covered by a session.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("topic")]
+	[Vertex("topic", Description = "The overall topic covered by a session.")]
 	public class Topic : SessionizeSortedLookupType
 	{
 

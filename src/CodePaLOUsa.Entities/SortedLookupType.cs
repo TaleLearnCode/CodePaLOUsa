@@ -16,7 +16,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <see cref="int"/> representing the sort order of the item within the complete list.
 		/// </value>
-		[GraphProperty("sortOrder")]
+		[GraphProperty("sortOrder", Description = "The sort order of the vertex in relation to the other vertices with the same label")]
 		public int SortOrder { get; set; }
 
 		/// <summary>

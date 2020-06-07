@@ -8,7 +8,7 @@ namespace CodePaLOUsa.Entities
 	/// Provides information about an event day.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("EventDay")]
+	[Vertex("eventDay", Description = "Provides information \"about\" an event day.")]
 	public class EventDay : Vertex
 	{
 
@@ -18,7 +18,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>DateTime</c> representing the date of the event day.
 		/// </value>
-		[GraphProperty("name")]
+		[GraphProperty("name", Description = "The date of the event day.")]
 		public DateTime Date { get; set; }
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace CodePaLOUsa.Entities
 		/// A <c>int</c> representing the time offset for the start of the day.
 		/// </value>
 		/// <remarks>The offset is the number of minutes since midnight of the <see cref="Date"/>.</remarks>
-		[GraphProperty("startTimeOffset")]
+		[GraphProperty("startTimeOffset", Description = "The start time of the day represented by the number of minutes past midnight of the event day date.")]
 		public int StartTimeOffset { get; set; }
 
 		/// <summary>
@@ -47,7 +47,7 @@ namespace CodePaLOUsa.Entities
 		/// A <c>int</c> representing the time offset for the end of the day.
 		/// </value>
 		/// <remarks>The offset is the number of minutes since midnight of the <see cref="Date"/>.</remarks>
-		[GraphProperty("endTimeOffset")]
+		[GraphProperty("endTimeOffset", Description = "The end time of the day represented by the number of minutes past midnight of the event day.")]
 		public int EndTimeOffset { get; set; }
 
 		/// <summary>

@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Represents a period in which sessions are scheduled.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("SessionPeriod")]
+	[Vertex("sessionPeriod", Description = "Represents a period in which sessions are scheduled.")]
 	public class SessionPeriod : Vertex
 	{
 
@@ -17,7 +17,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>int</c> representing the number of minutes past midnight the session period begins.
 		/// </value>
-		[GraphProperty("startTimeOffset")]
+		[GraphProperty("startTimeOffset", Description = "The number of minutes past midnight the session period begins.")]
 		public int StartTimeOffset { get; set; }
 
 		/// <summary>
@@ -26,7 +26,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>int</c> representing the number of minutes the session period runs.
 		/// </value>
-		[GraphProperty("duration")]
+		[GraphProperty("duration", Description = "The number of minutes the session period runs.")]
 		public int Duration { get; set; }
 
 		/// <summary>

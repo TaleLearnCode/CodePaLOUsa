@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Defines the type a session period is.
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
-	[Vertex("SessionPeriodType")]
+	[Vertex("sessionPeriodType", Description = "Defines the type a session pereiod is.")]
 	public class SessionPeriodType : SortedLookupType
 	{
 		/// <summary>

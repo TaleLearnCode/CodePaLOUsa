@@ -20,6 +20,15 @@ namespace TaleLearnCode.CosmosGremlinORM
 		public string Label { get; set; }
 
 		/// <summary>
+		/// Gets or sets the description of the vertex.
+		/// </summary>
+		/// <value>
+		/// A <c>string</c> representing the description of the vertex.
+		/// </value>
+		/// <remarks>This value is used when creating schema documentation.</remarks>
+		public string Description { get; set; }
+
+		/// <summary>
 		/// Gets or sets a value indicating whether delete operations should only perform a soft delete.
 		/// </summary>
 		/// <value>

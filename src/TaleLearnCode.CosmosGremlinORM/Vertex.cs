@@ -69,19 +69,20 @@ namespace TaleLearnCode.CosmosGremlinORM
 			return string.Empty;
 		}
 
-		private static string CasedString(string input, PropertyNamingPolicy propertyNamingPolicy)
+		public static string CasedString(string input, PropertyNamingPolicy propertyNamingPolicy)
 		{
-			switch (propertyNamingPolicy)
-			{
-				case PropertyNamingPolicy.CamelCase:
-					input = char.ToLower(input[0], CultureInfo.InvariantCulture) + input.Substring(1);
-					break;
-				case PropertyNamingPolicy.PascalCase:
-					input = char.ToUpper(input[0], CultureInfo.InvariantCulture) + input.Substring(1);
-					break;
-				default:
-					break;
-			}
+			if (!string.IsNullOrWhiteSpace(input))
+				switch (propertyNamingPolicy)
+				{
+					case PropertyNamingPolicy.CamelCase:
+						input = char.ToLower(input[0], CultureInfo.InvariantCulture) + input.Substring(1);
+						break;
+					case PropertyNamingPolicy.PascalCase:
+						input = char.ToUpper(input[0], CultureInfo.InvariantCulture) + input.Substring(1);
+						break;
+					default:
+						break;
+				}
 			return input;
 		}
 

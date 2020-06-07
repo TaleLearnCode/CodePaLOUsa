@@ -20,6 +20,15 @@ namespace TaleLearnCode.CosmosGremlinORM
 		public string Key { get; set; }
 
 		/// <summary>
+		/// Gets or sets the description of the property.
+		/// </summary>
+		/// <value>
+		/// A <c>string</c> representing the description of the property.
+		/// </value>
+		/// <remarks>This value is used when creating schema documentation.</remarks>
+		public string Description { get; set; }
+
+		/// <summary>
 		/// Gets or sets a value indicating whether the property value is required within the graph.
 		/// </summary>
 		/// <value>

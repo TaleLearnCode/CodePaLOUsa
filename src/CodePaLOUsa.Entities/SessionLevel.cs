@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Defines the level of a session.
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
-	[Vertex("sessionLevel")]
+	[Vertex("sessionLevel", Description = "Defines the level of a session.")]
 	public class SessionLevel : SessionizeSortedLookupType
 	{
 

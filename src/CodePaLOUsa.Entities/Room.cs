@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Represents a "room" where a session is presented.
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
-	[Vertex("room")]
+	[Vertex("room", Description = "Represents a \"room\" where a session is presented.")]
 	public class Room : SessionizeSortedLookupType
 	{
 

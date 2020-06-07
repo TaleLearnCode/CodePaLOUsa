@@ -24,7 +24,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the speaker's Twitter profile.
 		/// </value>
-		[GraphProperty("twitter")]
+		[GraphProperty("twitter", Description = "The URl for the speaker Twitter profile.")]
 		public string? Twitter
 		{
 			get { return _twitter; }
@@ -37,7 +37,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the speaker's LinkedIn profile.
 		/// </value>
-		[GraphProperty("linkedIn")]
+		[GraphProperty("linkedIn", Description = "The URL for the speaker LinkedIn profile.")]
 		public string? LinkedIn
 		{
 			get { return _linkedIn; }
@@ -50,7 +50,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the speaker's blog.
 		/// </value>
-		[GraphProperty("blog")]
+		[GraphProperty("blog", Description = "The URL for the speaker blog.")]
 		public string? Blog
 		{
 			get { return _blog; }
@@ -63,7 +63,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the of the website of the speaker's company.
 		/// </value>
-		[GraphProperty("companyWebsite")]
+		[GraphProperty("companyWebsite", Description = "The URl to the website of the speakers company.")]
 		public string? CompanyWebsite
 		{
 			get { return _companyWebsite; }
@@ -76,7 +76,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the speaker's Facebook profile.
 		/// </value>
-		[GraphProperty("facebook")]
+		[GraphProperty("facebook", Description = "The URL for the speaker Facebook profile.")]
 		public string? Facebook
 		{
 			get { return _facebook; }
@@ -89,7 +89,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the speaker's Instagram profile.
 		/// </value>
-		[GraphProperty("instagram")]
+		[GraphProperty("instagram", Description = "The URL for the speaker Instagram profile.")]
 		public string? Instagram
 		{
 			get { return _instagram; }
@@ -102,7 +102,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the URL to the speaker's Twitch profile.
 		/// </value>
-		[GraphProperty("twitch")]
+		[GraphProperty("twitch", Description = "The URL for the speaker Twitch channel.")]
 		public string? Twitch
 		{
 			get { return _twitch; }

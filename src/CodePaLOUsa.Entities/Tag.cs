@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Represents a tag for sessions and such.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("tag")]
+	[Vertex("tag", Description = "A tag for sessions and such.")]
 	public class Tag : Vertex
 	{
 
@@ -17,7 +17,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the identifier of the Tag within Sessionize.
 		/// </value>
-		[GraphProperty("sessionizeId")]
+		[GraphProperty("sessionizeId", Description = "The Sessionize identifier for the Tag.")]
 		public string SessionizeId { get; set; }
 
 		/// <summary>Initializes a new instance of the <see cref="Tag" /> class.</summary>

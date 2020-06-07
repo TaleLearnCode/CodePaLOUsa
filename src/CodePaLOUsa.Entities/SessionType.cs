@@ -7,7 +7,7 @@ namespace CodePaLOUsa.Entities
 	/// Represents a type of session.
 	/// </summary>
 	/// <seealso cref="SortedLookupType" />
-	[Vertex("sessionType")]
+	[Vertex("sessionType", Description = "Represents a type of session.")]
 	public class SessionType : SessionizeSortedLookupType
 	{
 
@@ -19,7 +19,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>int</c> representing the session length in minutes.
 		/// </value>
-		[GraphProperty("sessionLength")]
+		[GraphProperty("sessionLength", Description = "The length of sessions within the session type.")]
 		public int SessionLength { get; set; }
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		///   <c>true</c> if sessions are shown on schedule; otherwise, <c>false</c>.
 		/// </value>
-		[GraphProperty("showOnSchedule")]
+		[GraphProperty("showOnSchedule", Description = "Flag indicating whether sessions of this type are displayed on the schedule.")]
 		public bool ShowOnSchedule { get; set; }
 
 		/// <summary>

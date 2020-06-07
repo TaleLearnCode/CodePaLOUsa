@@ -16,7 +16,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the document identifier.
 		/// </value>
-		[GraphProperty("id")]
+		[GraphProperty("id", Description = "Identifier of the document.")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -25,7 +25,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the event identifier.
 		/// </value>
-		[GraphProperty("eventId")]
+		[GraphProperty("eventId", Description = "Identifier of the event the vertex is associated with. Serves as the partition key.")]
 		public string EventId { get; set; }
 
 		/// <summary>
@@ -34,7 +34,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the vertex object name.
 		/// </value>
-		[GraphProperty("name")]
+		[GraphProperty("name", Description = "The name of the vertex object.")]
 		public string Name { get; set; }
 
 		/// <summary>Initializes a new instance of the <see cref="Vertex" /> class.</summary>

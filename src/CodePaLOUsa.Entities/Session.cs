@@ -4,10 +4,10 @@ namespace CodePaLOUsa.Entities
 {
 
 	/// <summary>
-	/// Represents a session within the event.
+	/// Represents a session within an event.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("Session")]
+	[Vertex("session", Description = "A session within an event.")]
 	public class Session : Vertex
 	{
 
@@ -17,7 +17,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the short version of the session name.
 		/// </value>
-		[GraphProperty("shortName")]
+		[GraphProperty("shortName", Description = "The shortened name of the session.")]
 		public string? ShortName { get; set; }
 
 		/// <summary>
@@ -26,7 +26,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the session description.
 		/// </value>
-		[GraphProperty("description")]
+		[GraphProperty("description", Description = "The description of the session (abstract).")]
 		public string Description { get; set; }
 
 		/// <summary>
@@ -35,7 +35,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the shortened version of the session description.
 		/// </value>
-		[GraphProperty("shortDescription")]
+		[GraphProperty("shortDescription", Description = "The shortened description of the session.")]
 		public string? ShortDescription { get; set; }
 
 		/// <summary>
@@ -44,7 +44,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the items required prior to attending the session.
 		/// </value>
-		[GraphProperty("prerequisites")]
+		[GraphProperty("prerequisites", Description = "The items required prior to attending the session.")]
 		public string? Prerequisites { get; set; }
 
 		/// <summary>Initializes a new instance of the <see cref="Session" /> class.</summary>

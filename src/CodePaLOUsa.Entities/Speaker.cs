@@ -5,10 +5,10 @@ namespace CodePaLOUsa.Entities
 {
 
 	/// <summary>
-	/// Represents a speaker at the event.
+	/// Represents a speaker at an event.
 	/// </summary>
 	/// <seealso cref="Vertex" />
-	[Vertex("Speaker")]
+	[Vertex("speaker", Description = "A speaker at an event.")]
 	public class Speaker : Vertex
 	{
 
@@ -18,7 +18,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the first name of the speaker.
 		/// </value>
-		[GraphProperty("firstName")]
+		[GraphProperty("firstName", Description = "The first name of the speaker.")]
 		public string FirstName { get; set; }
 
 		/// <summary>
@@ -27,7 +27,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the last name of the speaker.
 		/// </value>
-		[GraphProperty("lastName")]
+		[GraphProperty("lastName", Description = "The last name of the speaker.")]
 		public string LastName { get; set; }
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the speaker's biography.
 		/// </value>
-		[GraphProperty("biography")]
+		[GraphProperty("biography", Description = "The biography for the speaker.")]
 		public string Biography { get; set; }
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <c>string</c> representing the speaker's tagline.
 		/// </value>
-		[GraphProperty("tagline")]
+		[GraphProperty("tagline", Description = "The tagline for the speaker.")]
 		public string Tagline { get; set; }
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace CodePaLOUsa.Entities
 		/// <value>
 		/// A <see cref="Uri"/> representing the URI to the speaker's photo.
 		/// </value>
-		[GraphProperty("photo")]
+		[GraphProperty("photo", Description = "The URI for the speaker photo.")]
 		public Uri Photo { get; set; }
 
 		/// <summary>
