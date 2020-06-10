@@ -14,12 +14,38 @@ namespace CodePaLOUsa.GraphBuilder
 			Console.WriteLine("Press key to start building the database...");
 			Console.ReadKey();
 
-			PopulateSessionLevels();
-			PopulateRooms();
-			PopulateSessionTypes();
-			PopulateTopics();
-			PopulateTags();
+			//PopulateSessionLevels();
+			//PopulateRooms();
+			//PopulateSessionTypes();
+			//PopulateTopics();
+			//PopulateTags();
+			//PopulateSessionPeriodTypes();
+			PopulateEvents();
+		}
 
+		private static void PopulateEvents()
+		{
+			Console.WriteLine("PopulateEvents");
+			ExecuteGremlin("g.V().hasLabel('event').has('eventId', '10').Drop()");
+
+			var cpl20 = new EventDetail("10", "Code PaLOUsa 2020", "An awesome event", new Uri("https://codepalousa.com"));
+
+			cpl20.SessionPeriodTypes.Add(new SessionPeriodType("10", "Sessions"));
+			cpl20.SessionPeriodTypes.Add(new SessionPeriodType("10", "Workshops"));
+			cpl20.SessionPeriodTypes.Add(new SessionPeriodType("10", "Keynote"));
+			cpl20.SessionPeriodTypes.Add(new SessionPeriodType("10", "Break"));
+
+			SaveVertex(new EventDetail("10", "Code PaLOUsa 2020", "An awesome event", new Uri("https://codepalousa.com")));
+		}
+
+		private static void PopulateSessionPeriodTypes()
+		{
+			Console.WriteLine("PopulateSessionPeriodTypes");
+			ExecuteGremlin("g.V().hasLabel('sessionPeriodType').has('eventId', 10).Drop()");
+			SaveVertex(new SessionPeriodType("10", "Sessions") { IncludeInSelectionList = true });
+			SaveVertex(new SessionPeriodType("10", "Workshops") { IncludeInSelectionList = true });
+			SaveVertex(new SessionPeriodType("10", "Keynote") { IncludeInSelectionList = true });
+			SaveVertex(new SessionPeriodType("10", "Break") { IncludeInSelectionList = false });
 		}
 
 		private static void PopulateSessionLevels()

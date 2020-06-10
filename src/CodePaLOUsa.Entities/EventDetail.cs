@@ -29,7 +29,7 @@ namespace CodePaLOUsa.Entities
 		/// A <c>DateTime</c> representing the date the event starts.
 		/// </value>
 		[GraphProperty("startDate", Description = "The date the event starts.")]
-		public DateTime StartDate { get; set; }
+		public DateTime? StartDate { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date the event ends.
@@ -38,7 +38,7 @@ namespace CodePaLOUsa.Entities
 		/// A <c>DateTime</c> representing the date the event ends.
 		/// </value>
 		[GraphProperty("endDate", Description = "The date the event ends.")]
-		public DateTime EndDate { get; set; }
+		public DateTime? EndDate { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the schedule has been released.
@@ -76,6 +76,17 @@ namespace CodePaLOUsa.Entities
 		[GraphProperty("eventDays", IncludeInGraph = false)]
 		public List<EventDay> EventDays { get; } = new List<EventDay>();
 
+		// TODO: Implement ORM lazy loading
+		/// <summary>
+		/// Gets the list of session period types used by the event.
+		/// </summary>
+		/// <value>
+		/// A <see cref="List{SessionPeriodType}"/> representing the event session period types.
+		/// </value>
+		[GraphProperty("sessionPeriodTypes", IncludeInGraph = false)]
+		[Edge(typeof(EventDetail), typeof(SessionPeriodType), "has")]
+		public List<SessionPeriodType>? SessionPeriodTypes { get; } = new List<SessionPeriodType>();
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EventDetail"/> class.
 		/// </summary>
@@ -84,7 +95,7 @@ namespace CodePaLOUsa.Entities
 		/// <param name="id">The identifier of the vertex document.</param>
 		/// <param name="about">The "about" information for the event.</param>
 		/// <param name="registrationSiteUrl">The URL of the registration site.</param>
-		public EventDetail(string eventId, string name, string about, Uri registrationSiteUrl, string id = "") : base(eventId, name, id)
+		public EventDetail(string eventId, string name, string about, Uri registrationSiteUrl) : base(eventId, name, eventId)
 		{
 			About = about;
 			RegistrationSiteUrl = registrationSiteUrl;

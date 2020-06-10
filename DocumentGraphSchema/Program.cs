@@ -1,5 +1,6 @@
 ﻿using ShellProgressBar;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,9 @@ namespace DocumentGraphSchema
 	{
 		static void Main(string[] args)
 		{
+
+			Console.WriteLine("Press any key to start...");
+			Console.ReadKey();
 
 			// TODO: Convert these to input parameters
 			string partitionKey = "eventId";
@@ -31,6 +35,8 @@ namespace DocumentGraphSchema
 			int assemblyTypeCount = assembly.GetTypes().Count();
 			int typeCounter = 1;
 			using var progressBar = new ProgressBar(assemblyTypeCount, ProgressBarMessage(typeCounter, assemblyTypeCount), progressBarOptions);
+
+			List<string> edges = new List<string>();
 
 			foreach (Type type in assembly.GetTypes())
 			{
@@ -55,10 +61,16 @@ namespace DocumentGraphSchema
 									bool includeInGraph = graphPropertyAttribute.IncludeInGraph;
 									if (includeInGraph)
 									{
-										key = string.IsNullOrWhiteSpace(graphPropertyAttribute.Key) ? Vertex.CasedString(property.Name, vertexAttribute.PropertyNamingPolicy) : graphPropertyAttribute.Key;
+										key = string.IsNullOrWhiteSpace(graphPropertyAttribute.Key) ? TaleLearnCode.CosmosGremlinORM.Vertex.CasedString(property.Name, vertexAttribute.PropertyNamingPolicy) : graphPropertyAttribute.Key;
 										description = graphPropertyAttribute.Description;
 										isRequired = graphPropertyAttribute.IsRequired;
 									}
+								}
+								else if (propertyAttribute.GetType() == typeof(EdgeAttribute))
+								{
+									var edgeAttribute = (EdgeAttribute)Attribute.GetCustomAttribute(property, typeof(EdgeAttribute), true);
+									edges.Add($"g.V().hasLabel('{GetVertexLabelOfType(assembly, edgeAttribute.Origin)}').has('{partitionKey}', '{partitionKeyValue}').addE('{edgeAttribute.Label}').to(g.V().hasLabel('{GetVertexLabelOfType(assembly, edgeAttribute.Destination)}').has('{partitionKey}', '{partitionKeyValue}'))");
+
 								}
 							}
 						}
@@ -75,6 +87,24 @@ namespace DocumentGraphSchema
 				progressBar.Tick(ProgressBarMessage(typeCounter, assemblyTypeCount));
 			}
 
+			if (edges.Any())
+				foreach (var edgeSchema in edges)
+					ExecuteGremlin(edgeSchema);
+
+		}
+
+		private static string GetVertexLabelOfType(Assembly assembly, Type type)
+		{
+			foreach (Type assemblyType in assembly.GetTypes())
+				if (assemblyType == type)
+				{
+					VertexAttribute vertexAttribute = (VertexAttribute)Attribute.GetCustomAttribute(assemblyType, typeof(VertexAttribute));
+					if (vertexAttribute != default)
+						return vertexAttribute.Label;
+					else
+						return assemblyType.Name;
+				}
+			throw new Exception("Edge type not found.");
 		}
 
 		private static string ProgressBarMessage(int typeCounter, int assemblyTypeCount)
