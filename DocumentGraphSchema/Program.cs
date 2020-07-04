@@ -61,7 +61,7 @@ namespace DocumentGraphSchema
 									bool includeInGraph = graphPropertyAttribute.IncludeInGraph;
 									if (includeInGraph)
 									{
-										key = string.IsNullOrWhiteSpace(graphPropertyAttribute.Key) ? TaleLearnCode.CosmosGremlinORM.Vertex.CasedString(property.Name, vertexAttribute.PropertyNamingPolicy) : graphPropertyAttribute.Key;
+										key = string.IsNullOrWhiteSpace(graphPropertyAttribute.Key) ? TaleLearnCode.CosmosGremlinORM.Vertex_old.CasedString(property.Name, vertexAttribute.PropertyNamingPolicy) : graphPropertyAttribute.Key;
 										description = graphPropertyAttribute.Description;
 										isRequired = graphPropertyAttribute.IsRequired;
 									}

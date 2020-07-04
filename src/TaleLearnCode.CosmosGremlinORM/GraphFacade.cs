@@ -74,4 +74,10 @@ namespace TaleLearnCode.CosmosGremlinORM
 
 	}
 
+	public class TestObject
+	{
+
+
+	}
+
 }

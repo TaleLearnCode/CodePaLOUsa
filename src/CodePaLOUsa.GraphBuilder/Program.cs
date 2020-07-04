@@ -169,7 +169,7 @@ namespace CodePaLOUsa.GraphBuilder
 
 		private static void SaveVertex<T>(T vertex)
 		{
-			ExecuteGremlin(TaleLearnCode.CosmosGremlinORM.Vertex.Save<T>(vertex));
+			ExecuteGremlin(TaleLearnCode.CosmosGremlinORM.Vertex_old.Save<T>(vertex));
 		}
 
 		private static void ExecuteGremlin(string statement)

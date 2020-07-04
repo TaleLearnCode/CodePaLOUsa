@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Threading.Tasks;
 using TaleLearnCode.CosmosGremlinORM.Exceptions;
 
@@ -10,7 +9,7 @@ namespace TaleLearnCode.CosmosGremlinORM
 	public class GraphContext
 	{
 
-		Dictionary<string, TrackedVertex> changeTracker = new Dictionary<string, TrackedVertex>();
+		Dictionary<string, TrackedVertex> _changeTracker = new Dictionary<string, TrackedVertex>();
 
 		public GraphFacade GraphFacade { get; }
 
@@ -26,24 +25,19 @@ namespace TaleLearnCode.CosmosGremlinORM
 			GraphFacade = new GraphFacade(endpoint, authKey, databaseName, graphName);
 		}
 
-		//public virtual VertexEntry<TVertex> Add<TVertex>(TVertex vertex)
-		//{
-
-		//}
-
 		public virtual void Add(Vertex vertex)
 		{
 			if (vertex is null) throw new ArgumentNullException(nameof(vertex));
-			changeTracker.Add(vertex.Id, new TrackedVertex(vertex, VertexState.Added));
+			_changeTracker.Add(vertex.Id, new TrackedVertex(vertex, VertexState.Added));
 		}
 
 		public virtual void Update(Vertex vertex)
 		{
 			if (vertex is null) throw new ArgumentNullException(nameof(vertex));
-			if (changeTracker.ContainsKey(vertex.Id))
+			if (_changeTracker.ContainsKey(vertex.Id))
 			{
-				changeTracker[vertex.Id].Vertex = vertex;
-				changeTracker[vertex.Id].State = VertexState.Modified;
+				_changeTracker[vertex.Id].Vertex = vertex;
+				_changeTracker[vertex.Id].State = VertexState.Modified;
 			}
 			else
 				throw new VertexNotInChangeTrackerException();
@@ -52,30 +46,52 @@ namespace TaleLearnCode.CosmosGremlinORM
 		public virtual void Delete(Vertex vertex)
 		{
 			if (vertex is null) throw new ArgumentNullException(nameof(vertex));
-			if (changeTracker.ContainsKey(vertex.Id))
+			if (_changeTracker.ContainsKey(vertex.Id))
 			{
-				changeTracker[vertex.Id].State = VertexState.Deleted;
+				_changeTracker[vertex.Id].State = VertexState.Deleted;
 			}
 			else
 			{
-				changeTracker.Add(vertex.Id, new TrackedVertex(vertex, VertexState.Deleted));
+				_changeTracker.Add(vertex.Id, new TrackedVertex(vertex, VertexState.Deleted));
 			}
 		}
+
+		//public virtual async Task<List<object>> Query(string gremlinQuery)
+		//{
+
+		//	if (string.IsNullOrWhiteSpace(gremlinQuery)) return null;
+		//	var resultSet = await GraphFacade.QueryAsync(gremlinQuery).ConfigureAwait(true);
+
+		//	List<object> returnValue = new List<object>();
+		//	if (resultSet.Count > 0)
+		//		foreach (var result in resultSet)
+		//		{
+		//			string output = JsonSerializer.Serialize(result);
+		//			//Console.WriteLine(output);
+
+		//			var array = output.Split('{');
+		//			Console.WriteLine(array.Length);
+
+
+		//			//var resultObject = JsonSerializer.Deserialize<TVertex>(result);
+		//			//if (resultObject is Vertex)
+		//			//	_changeTracker.Add(((Vertex)resultObject).Id, resultObject);
+		//			//returnValue.Add(resultObject);
+		//		}
+
+		//	return returnValue;
+
+		//}
 
 		public virtual async Task<List<TVertex>> Query<TVertex>(string gremlinQuery)
 		{
 
-			if (string.IsNullOrWhiteSpace(gremlinQuery)) return null;
+			if (string.IsNullOrWhiteSpace(gremlinQuery)) throw new ArgumentNullException(nameof(gremlinQuery));
 			var resultSet = await GraphFacade.QueryAsync(gremlinQuery).ConfigureAwait(true);
 
+
 			List<TVertex> returnValue = new List<TVertex>();
-			if (resultSet.Count > 0)
-				foreach (var result in resultSet)
-				{
-					var resultObject = JsonSerializer.Deserialize<TVertex>(result);
-					if (resultObject is Vertex)
-						changeTracker.Add(((Vertex)resultObject).Id, resultObject);
-				}
+
 
 
 			return returnValue;
